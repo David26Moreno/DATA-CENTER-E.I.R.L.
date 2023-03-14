@@ -215,6 +215,14 @@ const Crud = () => {
             </>
         );
     };
+    const quantityodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Quantity</span>
+                {rowData.quantity}
+            </>
+        );
+    };
 
     const imageBodyTemplate = (rowData) => {
         return (
@@ -328,7 +336,7 @@ const Crud = () => {
                         <Column field="name" header="Nombre" sortable body={nameBodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
                         <Column field="category" header="Categoria" sortable body={categoryBodyTemplate} headerStyle={{ minWidth: '10rem' }}></Column>
                         <Column header="imagen" body={imageBodyTemplate}></Column>
-                        <Column field="quantity" header="Cantidad" sortable body={nameBodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
+                        <Column field="quantity" header="Cantidad" sortable body={quantityodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
                         <Column field="price" header="Precio" body={priceBodyTemplate} sortable></Column>
                         <Column field="inventoryStatus" header="Estado" body={statusBodyTemplate} sortable headerStyle={{ minWidth: '10rem' }}></Column>
                         <Column body={actionBodyTemplate} headerStyle={{ minWidth: '10rem' }}></Column>
@@ -351,15 +359,15 @@ const Crud = () => {
                             <div className="formgrid grid">
                                 <div className="field-radiobutton col-6">
                                     <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
-                                    <label htmlFor="category1">Accessories</label>
+                                    <label htmlFor="category1">Computacion e Informatica</label>
                                 </div>
                                 <div className="field-radiobutton col-6">
                                     <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.category === 'Electronics'} />
-                                    <label htmlFor="category3">Electronics</label>
+                                    <label htmlFor="category3">Electronica</label>
                                 </div>
                                 <div className="field-radiobutton col-6">
                                     <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.category === 'Fitness'} />
-                                    <label htmlFor="category4">Fitness</label>
+                                    <label htmlFor="category4">Diseño Grafico</label>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +389,7 @@ const Crud = () => {
                             <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
                             {product && (
                                 <span>
-                                    Are you sure you want to delete <b>{product.name}</b>?
+                                    ¿Estás segura de que quieres eliminar? <b>{product.name}</b>?
                                 </span>
                             )}
                         </div>
@@ -390,7 +398,7 @@ const Crud = () => {
                     <Dialog visible={deleteProductsDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
                         <div className="flex align-items-center justify-content-center">
                             <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
-                            {product && <span>Are you sure you want to delete the selected products?</span>}
+                            {product && <span>¿Está seguro de que desea eliminar los productos seleccionados?</span>}
                         </div>
                     </Dialog>
                 </div>
